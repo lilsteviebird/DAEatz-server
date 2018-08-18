@@ -14,7 +14,15 @@ let now = new Date();
 
 // var tdate = date.format(now, 'YYYY-MM-DD');
 
-var tdate = "2018-08-20"
+var tdate = "2018-08-20";
+
+var foods = {
+	bf: [],
+	lun: [],
+	din:[]
+
+}
+
 
 
 
@@ -70,20 +78,52 @@ async function parsedData(){
          var calories = foodItem.data.kcal;
 
          var serving = Math.round((foodItem.data.primaryWeight / 100) * calories);
+         if(mealKey[x] == 'BREAKFAST'){
 
-         LUNCH.push(mealName);  
+         	
+         	BREAKFAST.push({
+         	name: mealName,
+         	cal: calories
+          });  
+
+
+
+         } else if(mealKey[x] == 'LUNCH'){
+         	LUNCH.push({
+         	name: mealName,
+         	cal: calories
+         }); 
+
+
+         }else{
+         	 DINNER.push({
+         	 name: mealName,
+         	 cal: calories
+         });  
+
+         }
+
 
     	}
+    
 
     }
 
 
-
     
 }
-	return LUNCH
+
+foods['bf']=BREAKFAST
+foods['lun']=LUNCH
+foods['din']=DINNER
+ 
+ console.log(foods);
+
+	return foods
 
 }
+
+
 
 
 app.listen(process.env.PORT || 3000, err =>{
@@ -93,6 +133,8 @@ app.listen(process.env.PORT || 3000, err =>{
 		console.log('Running on port 3000');
 	}
 });
+
+parsedData();
 
 
 
