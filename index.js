@@ -6,8 +6,8 @@ let date = require('date-and-time');
 var foodWeb = require('foodweb');
 const app = express();
 
-//app.use(bodyParser.urlencoded({extended: false}));
-// app.use(bodyParser.json());
+app.use(bodyParser.urlencoded({extended: false}));
+app.use(bodyParser.json());
 
 
 let now = new Date();
