@@ -1,0 +1,21 @@
+{
+  "name": "serverdaeatz",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "node index.js"
+  },
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "body-parser": "^1.18.3",
+    "cheerio": "^1.0.0-rc.2",
+    "date-and-time": "^0.6.2",
+    "express": "^4.16.3",
+    "foodweb": "^1.0.0",
+    "node-fetch": "^2.2.0",
+    "react-native-cheerio": "^1.0.0-rc.4"
+  }
+}
