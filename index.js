@@ -12,9 +12,9 @@ app.use(bodyParser.json());
 
 let now = new Date();
 
-// var tdate = date.format(now, 'YYYY-MM-DD');
+var tdate = date.format(now, 'YYYY-MM-DD');
 
-var tdate = "2018-08-20";
+
 
 var foods = {
 	bf: [],
@@ -83,7 +83,8 @@ async function parsedData(){
          	
          	BREAKFAST.push({
          	name: mealName,
-         	cal: calories
+         	cal: calories,
+            tdate: tdate
           });  
 
 
@@ -91,14 +92,16 @@ async function parsedData(){
          } else if(mealKey[x] == 'LUNCH'){
          	LUNCH.push({
          	name: mealName,
-         	cal: calories
+         	cal: calories,
+            tdate: tdate
          }); 
 
 
          }else{
          	 DINNER.push({
          	 name: mealName,
-         	 cal: calories
+         	 cal: calories,
+             tdate: tdate
          });  
 
          }
