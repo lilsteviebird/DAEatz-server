@@ -12,7 +12,9 @@ app.use(bodyParser.json());
 
 let now = new Date();
 
-var tdate = date.format(now, 'YYYY-MM-DD');
+// var tdate = date.format(now, 'YYYY-MM-DD');
+
+var tdate = date.format(now, '2018-08-21');
 
 
 
