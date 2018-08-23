@@ -17,15 +17,15 @@ let now = new Date();
 var tdate = date.format(now, '2018-08-23');
 
 
-var foods = {
+var foods = [
     {name:  'BREAKFAST', header: true},
-    bf: {};
+    {bf: {}},
     {name:  'LUNCH', header: true},
-	lun: {},
+	{lun: {}},
     {name:  'DINNER', header: true},
-	din:{}
+	{din: {}}
 
-}
+]
 
 
 
