@@ -101,10 +101,22 @@ async function parsedData(){
             tdate: tdate,
             header: false
          }); 
+            data.push({
+            name: mealName,
+            cal: calories,
+            tdate: tdate,
+            header: false
+         }); 
+            data.push({
+            name: mealName,
+            cal: calories,
+            tdate: tdate,
+            header: false
+         }); 
 
 
          }else{
-            data.push({name: 'LUNCH', header: true})
+            data.push({name: 'DINNER', header: true})
 
          	 data.push({
          	 name: mealName,
