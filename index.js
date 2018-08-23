@@ -22,6 +22,7 @@ var foods = {
     lun:[],
     din:[]
 }
+var data = [];
 
 
 
@@ -59,8 +60,8 @@ async function parsedData(){
 
 	const $ = cheerio.load(html);
 	var BREAKFAST = [{name: 'BREAKFAST', header: true}];
-	var LUNCH = [];
-	var DINNER = [];
+	var LUNCH = [{name: 'LUNCH', header: true}];
+	var DINNER = [{name: 'DINNER', header: true}];
     var mealKey = ['BREAKFAST', 'LUNCH', 'DINNER']
 
     for(x = 0; x < 3; x++){
@@ -125,10 +126,10 @@ async function parsedData(){
 foods['bf']=BREAKFAST
 foods['lun']=LUNCH
 foods['din']=DINNER
- 
+data.push(foods)
  console.log(foods);
 
-	return foods
+	return data
 
 }
 
