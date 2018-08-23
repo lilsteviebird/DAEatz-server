@@ -64,6 +64,12 @@ async function parsedData(){
 
     var mealKey = ['BREAKFAST', 'LUNCH', 'DINNER']
     data.push({name: 'BREAKFAST', header: true})
+     data.push({
+            name: 'hello',
+            cal: 100,
+            tdate: tdate,
+            header: false
+          })
     var LUNCH = [];
     var DINNER = [];
 
@@ -87,18 +93,13 @@ async function parsedData(){
          var serving = Math.round((foodItem.data.primaryWeight / 100) * calories);
          if(mealKey[x] == 'BREAKFAST'){
 
-         	// data.push({
-         	// name: mealName,
-         	// cal: calories,
-          //   tdate: tdate,
-          //   header: false
-          // });  
-            data.push({
-            name: 'hello',
-            cal: 100,
+         	data.push({
+         	name: mealName,
+         	cal: calories,
             tdate: tdate,
             header: false
-          }); 
+          });  
+           
 
 
     	}
@@ -111,6 +112,14 @@ async function parsedData(){
 }
 
 data.push({name: "LUNCH", header: true})
+
+ data.push({
+            name: 'hello',
+            cal: 200,
+            tdate: tdate,
+            header: false
+          })
+
  for(x = 1; x < 3; x++){
  
 
@@ -132,18 +141,13 @@ data.push({name: "LUNCH", header: true})
         if(mealKey[x] == 'LUNCH'){
 
 
-         //    data.push({
-         //    name: mealName,
-         //    cal: calories,
-         //    tdate: tdate,
-         //    header: false
-         // }); 
             data.push({
-            name: 'bye',
-            cal: 200,
+            name: mealName,
+            cal: calories,
             tdate: tdate,
             header: false
-          }); 
+         }); 
+           
 
 
          }
@@ -159,6 +163,13 @@ data.push({name: "LUNCH", header: true})
 }
 
 data.push({name: "DINNER", header: true})
+data.push({
+            name: 'asdf',
+            cal: 300,
+            tdate: tdate,
+            header: false
+          }); 
+
 
  for(x = 1; x < 3; x++){
  
@@ -181,18 +192,12 @@ data.push({name: "DINNER", header: true})
         if(mealKey[x] == 'DINNER'){
 
 
-         //    data.push({
-         //    name: mealName,
-         //    cal: calories,
-         //    tdate: tdate,
-         //    header: false
-         // }); 
             data.push({
-            name: 'kasdf',
-            cal: 500,
+            name: mealName,
+            cal: calories,
             tdate: tdate,
             header: false
-          }); 
+         }); 
 
 
          }
