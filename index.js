@@ -61,6 +61,9 @@ async function parsedData(){
 	const $ = cheerio.load(html);
 
     var mealKey = ['BREAKFAST', 'LUNCH', 'DINNER']
+    data.push({name: 'BREAKFAST', header: true})
+    var LUNCH = [];
+    var DINNER = [];
 
     for(x = 0; x < 3; x++){
  
@@ -81,7 +84,6 @@ async function parsedData(){
 
          var serving = Math.round((foodItem.data.primaryWeight / 100) * calories);
          if(mealKey[x] == 'BREAKFAST'){
-           data.push({name: 'BREAKFAST', header: true})
 
          	data.push({
          	name: mealName,
@@ -93,20 +95,19 @@ async function parsedData(){
 
 
          } else if(mealKey[x] == 'LUNCH'){
-           data.push({name: 'LUNCH', header: true})
 
-         	data.push({
+
+         	LUNCH.push({
          	name: mealName,
          	cal: calories,
             tdate: tdate,
             header: false
          }); 
-            
+
 
          }else{
-            data.push({name: 'DINNER', header: true})
 
-         	 data.push({
+         	 DINNER.push({
          	 name: mealName,
          	 cal: calories,
              tdate: tdate,
@@ -124,6 +125,11 @@ async function parsedData(){
 
     
 }
+
+data.push({name: "LUNCH", header: true})
+data.push(LUNCH)
+data.push({name: "DINNER", header: true})
+data.push(DINNER)
 
 
 
