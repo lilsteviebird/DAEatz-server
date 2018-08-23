@@ -94,10 +94,13 @@ async function parsedData(){
 
 
 
-         } else if(mealKey[x] == 'LUNCH'){
+         } 
+         data.push({name: "LUNCH", header: true})
+
+         else if(mealKey[x] == 'LUNCH'){
 
 
-         	LUNCH.push({
+         	data.push({
          	name: mealName,
          	cal: calories,
             tdate: tdate,
@@ -105,9 +108,11 @@ async function parsedData(){
          }); 
 
 
-         }else{
+         }
+         data.push({name: "DINNER", header: true})
+         else{
 
-         	 DINNER.push({
+         	 data.push({
          	 name: mealName,
          	 cal: calories,
              tdate: tdate,
@@ -126,10 +131,7 @@ async function parsedData(){
     
 }
 
-data.push({name: "LUNCH", header: true})
-data.push(LUNCH)
-data.push({name: "DINNER", header: true})
-data.push(DINNER)
+
 
 
 
