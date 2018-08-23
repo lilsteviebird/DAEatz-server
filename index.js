@@ -22,7 +22,7 @@ var foods = {
     lun:[],
     din:[]
 }
-var data = [];
+
 
 
 
@@ -51,6 +51,7 @@ parsedData().then((completedFetch)=>{
 async function parsedData(){
 	
 	const response = await fetch(deerfieldURL);
+    var data = [];
 	
 	if(!response.ok){
 		throw Error('Failed to get an HTML page');
@@ -186,8 +187,6 @@ data.push({name: "DINNER", header: true})
 
     
 }
-
-
 
 
 
