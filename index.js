@@ -59,6 +59,7 @@ async function parsedData(){
 
 	const $ = cheerio.load(html);
 	var BREAKFAST = [];
+    BREAKFAST.push({name: BREAKFAST, header: true})
 	var LUNCH = [];
 	var DINNER = [];
     var mealKey = ['BREAKFAST', 'LUNCH', 'DINNER']
