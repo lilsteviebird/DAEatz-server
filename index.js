@@ -94,13 +94,10 @@ async function parsedData(){
 
 
 
-         } 
-         data.push({name: "LUNCH", header: true})
-
-         if(mealKey[x] == 'LUNCH'){
+         } else if(mealKey[x] == 'LUNCH'){
 
 
-         	data.push({
+         	LUNCH.push({
          	name: mealName,
          	cal: calories,
             tdate: tdate,
@@ -108,11 +105,9 @@ async function parsedData(){
          }); 
 
 
-         }
-         data.push({name: "DINNER", header: true})
-         if(mealKEY[x] == 'DINNER'){
+         }else{
 
-         	 data.push({
+         	 DINNER.push({
          	 name: mealName,
          	 cal: calories,
              tdate: tdate,
@@ -131,6 +126,90 @@ async function parsedData(){
     
 }
 
+data.push({name: "LUNCH", header: true})
+ for(x = 1; x < 3; x++){
+ 
+
+
+    if($("#"+ tdate +"-" + mealKey[x]).children().length>0){
+    
+      for(i = 0; i < $("#"+ tdate +"-" + mealKey[x]).children().length; i++){
+   
+
+   
+        var mealName =$("#"+ tdate +"-" + mealKey[x]).children().eq(i).text();
+
+
+         var foodItem = foodWeb.search(mealName)[0];
+
+         var calories = foodItem.data.kcal;
+
+         var serving = Math.round((foodItem.data.primaryWeight / 100) * calories);
+        if(mealKey[x] == 'LUNCH'){
+
+
+            data.push({
+            name: mealName,
+            cal: calories,
+            tdate: tdate,
+            header: false
+         }); 
+
+
+         }
+
+
+        }
+    
+
+    }
+
+
+    
+}
+
+data.push({name: "DINNER", header: true})
+
+ for(x = 1; x < 3; x++){
+ 
+
+
+    if($("#"+ tdate +"-" + mealKey[x]).children().length>0){
+    
+      for(i = 0; i < $("#"+ tdate +"-" + mealKey[x]).children().length; i++){
+   
+
+   
+        var mealName =$("#"+ tdate +"-" + mealKey[x]).children().eq(i).text();
+
+
+         var foodItem = foodWeb.search(mealName)[0];
+
+         var calories = foodItem.data.kcal;
+
+         var serving = Math.round((foodItem.data.primaryWeight / 100) * calories);
+        if(mealKey[x] == 'DINNER'){
+
+
+            data.push({
+            name: mealName,
+            cal: calories,
+            tdate: tdate,
+            header: false
+         }); 
+
+
+         }
+
+
+        }
+    
+
+    }
+
+
+    
+}
 
 
 
