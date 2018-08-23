@@ -97,7 +97,7 @@ async function parsedData(){
          } 
          data.push({name: "LUNCH", header: true})
 
-         else if(mealKey[x] == 'LUNCH'){
+         if(mealKey[x] == 'LUNCH'){
 
 
          	data.push({
@@ -110,7 +110,7 @@ async function parsedData(){
 
          }
          data.push({name: "DINNER", header: true})
-         else{
+         if(mealKEY[x] == 'DINNER'){
 
          	 data.push({
          	 name: mealName,
