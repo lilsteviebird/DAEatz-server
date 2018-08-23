@@ -87,12 +87,18 @@ async function parsedData(){
          var serving = Math.round((foodItem.data.primaryWeight / 100) * calories);
          if(mealKey[x] == 'BREAKFAST'){
 
-         	data.push({
-         	name: mealName,
-         	cal: calories,
+         	// data.push({
+         	// name: mealName,
+         	// cal: calories,
+          //   tdate: tdate,
+          //   header: false
+          // });  
+            data.push({
+            name: 'hello',
+            cal: 100,
             tdate: tdate,
             header: false
-          });  
+          }); 
 
 
     	}
@@ -126,12 +132,18 @@ data.push({name: "LUNCH", header: true})
         if(mealKey[x] == 'LUNCH'){
 
 
+         //    data.push({
+         //    name: mealName,
+         //    cal: calories,
+         //    tdate: tdate,
+         //    header: false
+         // }); 
             data.push({
-            name: mealName,
-            cal: calories,
+            name: 'bye',
+            cal: 200,
             tdate: tdate,
             header: false
-         }); 
+          }); 
 
 
          }
@@ -169,12 +181,18 @@ data.push({name: "DINNER", header: true})
         if(mealKey[x] == 'DINNER'){
 
 
+         //    data.push({
+         //    name: mealName,
+         //    cal: calories,
+         //    tdate: tdate,
+         //    header: false
+         // }); 
             data.push({
-            name: mealName,
-            cal: calories,
+            name: 'kasdf',
+            cal: 500,
             tdate: tdate,
             header: false
-         }); 
+          }); 
 
 
          }
