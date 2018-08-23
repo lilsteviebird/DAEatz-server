@@ -83,7 +83,7 @@ async function parsedData(){
          var calories = foodItem.data.kcal;
 
          var serving = Math.round((foodItem.data.primaryWeight / 100) * calories);
-         if(mealKey[x] == 'LUNCH'){
+         if(mealKey[x] == 'BREAKFAST'){
 
          	data.push({
          	name: mealName,
@@ -164,7 +164,7 @@ data.push({name: "DINNER", header: true})
          var calories = foodItem.data.kcal;
 
          var serving = Math.round((foodItem.data.primaryWeight / 100) * calories);
-        if(mealKey[x] == 'LUNCH'){
+        if(mealKey[x] == 'DINNER'){
 
 
             data.push({
