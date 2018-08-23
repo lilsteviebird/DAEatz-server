@@ -19,11 +19,11 @@ var tdate = date.format(now, '2018-08-23');
 
 var foods = [
     {name:  'BREAKFAST', header: true},
-    {bf: {}},
+    {bf: []},
     {name:  'LUNCH', header: true},
-	{lun: {}},
+	{lun: []},
     {name:  'DINNER', header: true},
-	{din: {}}
+	{din: []}
 
 ]
 
@@ -127,9 +127,9 @@ async function parsedData(){
     
 }
 
-foods{'bf'}=BREAKFAST
-foods{'lun'}=LUNCH
-foods{'din'}=DINNER
+foods['bf']=BREAKFAST
+foods['lun']=LUNCH
+foods['din']=DINNER
  
  console.log(foods);
 
