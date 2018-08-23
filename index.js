@@ -27,6 +27,10 @@ var foods = {
 
 
 
+
+
+
+
 const deerfieldURL = "https://deerfield.edu/bulletin";
 
 
@@ -85,7 +89,8 @@ async function parsedData(){
          	BREAKFAST.push({
          	name: mealName,
          	cal: calories,
-            tdate: tdate
+            tdate: tdate,
+            header: false
           });  
 
 
@@ -94,7 +99,8 @@ async function parsedData(){
          	LUNCH.push({
          	name: mealName,
          	cal: calories,
-            tdate: tdate
+            tdate: tdate,
+            header: false
          }); 
 
 
@@ -102,7 +108,8 @@ async function parsedData(){
          	 DINNER.push({
          	 name: mealName,
          	 cal: calories,
-             tdate: tdate
+             tdate: tdate,
+             header: false
          });  
 
          }
