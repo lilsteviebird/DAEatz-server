@@ -12,9 +12,9 @@ app.use(bodyParser.json());
 
 let now = new Date();
 
-//var tdate = date.format(now, 'YYYY-MM-DD');
+var tdate = date.format(now, 'YYYY-MM-DD');
 
-var tdate = date.format(now, '2018-08-23');
+
 
 
 var foods = {
@@ -59,9 +59,7 @@ async function parsedData(){
 	const html = await response.text();
 
 	const $ = cheerio.load(html);
-	var BREAKFAST = [{name: 'BREAKFAST', header: true}];
-	var LUNCH = [{name: 'LUNCH', header: true}];
-	var DINNER = [{name: 'DINNER', header: true}];
+
     var mealKey = ['BREAKFAST', 'LUNCH', 'DINNER']
 
     for(x = 0; x < 3; x++){
@@ -83,9 +81,9 @@ async function parsedData(){
 
          var serving = Math.round((foodItem.data.primaryWeight / 100) * calories);
          if(mealKey[x] == 'BREAKFAST'){
+           data.push({name: 'BREAKFAST', header: true})
 
-         	
-         	BREAKFAST.push({
+         	data.push({
          	name: mealName,
          	cal: calories,
             tdate: tdate,
@@ -95,7 +93,9 @@ async function parsedData(){
 
 
          } else if(mealKey[x] == 'LUNCH'){
-         	LUNCH.push({
+           data.push({name: 'LUNCH', header: true})
+
+         	data.push({
          	name: mealName,
          	cal: calories,
             tdate: tdate,
@@ -104,7 +104,9 @@ async function parsedData(){
 
 
          }else{
-         	 DINNER.push({
+            data.push({name: 'LUNCH', header: true})
+
+         	 data.push({
          	 name: mealName,
          	 cal: calories,
              tdate: tdate,
@@ -123,11 +125,8 @@ async function parsedData(){
     
 }
 
-foods['bf']=BREAKFAST
-foods['lun']=LUNCH
-foods['din']=DINNER
-data.push(foods)
- console.log(foods);
+
+
 
 	return data
 
