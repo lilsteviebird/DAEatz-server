@@ -83,7 +83,7 @@ async function parsedData(){
          var calories = foodItem.data.kcal;
 
          var serving = Math.round((foodItem.data.primaryWeight / 100) * calories);
-         if(mealKey[x] == 'BREAKFAST'){
+         if(mealKey[x] == 'LUNCH'){
 
          	data.push({
          	name: mealName,
@@ -93,37 +93,13 @@ async function parsedData(){
           });  
 
 
-
-         } else if(mealKey[x] == 'LUNCH'){
-
-
-         	LUNCH.push({
-         	name: mealName,
-         	cal: calories,
-            tdate: tdate,
-            header: false
-         }); 
-
-
-         }else{
-
-         	 DINNER.push({
-         	 name: mealName,
-         	 cal: calories,
-             tdate: tdate,
-             header: false
-         });  
-
-         }
-
-
     	}
     
 
     }
 
 
-    
+    }
 }
 
 data.push({name: "LUNCH", header: true})
@@ -188,7 +164,7 @@ data.push({name: "DINNER", header: true})
          var calories = foodItem.data.kcal;
 
          var serving = Math.round((foodItem.data.primaryWeight / 100) * calories);
-        if(mealKey[x] == 'DINNER'){
+        if(mealKey[x] == 'LUNCH'){
 
 
             data.push({
