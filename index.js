@@ -94,7 +94,17 @@ async function parsedData(){
           });  
 
 
-    	}
+    	}if(mealKey[x] == 'LUNCH'){
+
+            data.push({
+            name: mealName,
+            cal: calories,
+            tdate: tdate,
+            header: false
+          });  
+
+
+        }
     
 
     }
@@ -177,6 +187,18 @@ data.push({name: "DINNER", header: true})
 
 
          }
+         if(mealKey[x] == 'LUNCH'){
+
+            data.push({
+            name: mealName,
+            cal: calories,
+            tdate: tdate,
+            header: false
+          });  
+
+
+        }
+    
 
 
         }
