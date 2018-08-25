@@ -111,6 +111,8 @@ async function parsedData(){
     }
 }
 
+
+
 data.push({name: "LUNCH", header: true})
 
  // data.push({
@@ -127,23 +129,36 @@ data.push({name: "LUNCH", header: true})
     if($("#"+ tdate +"-" + mealKey[x]).children().length>0){
     
       for(i = 0; i < $("#"+ tdate +"-" + mealKey[x]).children().length; i++){
-   
 
+        var breakMealNames = [];
+        var breakTolCal = 0;
+   
    
         var mealName =$("#"+ tdate +"-" + mealKey[x]).children().eq(i).text();
 
+        breakMealNames = mealName.split(" ");
 
-         var foodItem = foodWeb.search(mealName)[0];
+        for(p=0; p < breakMealNames.length; p++){
+            var foodItem = foodWeb.search(breakMealNames[p])[0];
+            var calories = foodItem.data.kcal;
+            var serving = Math.round((foodItem.data.primaryWeight / 100) * calories);
 
-         var calories = foodItem.data.kcal;
+            breakTolCal = breakTolCal + calories;
 
-         var serving = Math.round((foodItem.data.primaryWeight / 100) * calories);
+        }
+
+
+         // var foodItem = foodWeb.search(mealName)[0];
+
+         // var calories = foodItem.data.kcal;
+
+         // var serving = Math.round((foodItem.data.primaryWeight / 100) * calories);
         if(mealKey[x] == 'LUNCH'){
 
 
             data.push({
             name: mealName,
-            cal: calories,
+            cal: breakTolCal,
             tdate: tdate,
             header: false
          }); 
@@ -154,6 +169,8 @@ data.push({name: "LUNCH", header: true})
 
 
         }
+
+
     
 
     }
