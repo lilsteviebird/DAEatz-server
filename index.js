@@ -129,22 +129,23 @@ data.push({name: "LUNCH", header: true})
       for(i = 0; i < $("#"+ tdate +"-" + mealKey[x]).children().length; i++){
    
         var breakNames = [];
-        var breakNamesTolCal = 0;
    
         var mealName =$("#"+ tdate +"-" + mealKey[x]).children().eq(i).text();
 
         var breakNames = mealName.split();
 
-        for(p = 0; p < breakNames.length; p++){
-            var foodItem = foodWeb.search(breakNames[p])[0];
-            var calories = foodItem.data.kcal;
-            breakNamesTolCal = breakNamesTolCal + calories;
-               if(mealKey[x] == 'LUNCH'){
+
+         var foodItem = foodWeb.search('beef')[0];
+
+         var calories = foodItem.data.kcal;
+
+         var serving = Math.round((foodItem.data.primaryWeight / 100) * calories);
+        if(mealKey[x] == 'LUNCH'){
 
 
             data.push({
             name: mealName,
-            cal: breakNamesTolCal,
+            cal: calories,
             tdate: tdate,
             header: false
          }); 
@@ -152,16 +153,6 @@ data.push({name: "LUNCH", header: true})
 
 
          }
-
-
-
-        }
-
-
-         
-
-         // var serving = Math.round((foodItem.data.primaryWeight / 100) * calories);
-        
 
 
         }
