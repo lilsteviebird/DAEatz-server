@@ -26,19 +26,14 @@ var foods = {
 
 
 
-
-
-
-
-
 const deerfieldURL = "https://deerfield.edu/bulletin";
 
 
 app.get("/getfoodinfo", (req, res) => {
 
 parsedData().then((completedFetch)=>{
-	console.log("worked", completedFetch);
-	res.send(JSON.stringify(completedFetch));
+    console.log("worked", completedFetch);
+    res.send(JSON.stringify(completedFetch));
 })
 
 
@@ -47,20 +42,18 @@ parsedData().then((completedFetch)=>{
 
 
 
-
-
 async function parsedData(){
-	
-	const response = await fetch(deerfieldURL);
+    
+    const response = await fetch(deerfieldURL);
     var data = [];
-	
-	if(!response.ok){
-		throw Error('Failed to get an HTML page');
-	}
-	
-	const html = await response.text();
+    
+    if(!response.ok){
+        throw Error('Failed to get an HTML page');
+    }
+    
+    const html = await response.text();
 
-	const $ = cheerio.load(html);
+    const $ = cheerio.load(html);
 
     var mealKey = ['BREAKFAST', 'LUNCH', 'DINNER']
     data.push({name: 'BREAKFAST', header: true})
@@ -83,7 +76,7 @@ async function parsedData(){
    
 
    
-      	var mealName =$("#"+ tdate +"-" + mealKey[x]).children().eq(i).text();
+        var mealName =$("#"+ tdate +"-" + mealKey[x]).children().eq(i).text();
 
 
          var foodItem = foodWeb.search(mealName)[0];
@@ -93,16 +86,16 @@ async function parsedData(){
          var serving = Math.round((foodItem.data.primaryWeight / 100) * calories);
          if(mealKey[x] == 'BREAKFAST'){
 
-         	data.push({
-         	name: mealName,
-         	cal: calories,
+            data.push({
+            name: mealName,
+            cal: calories,
             tdate: tdate,
             header: false
           });  
            
 
 
-    	}
+        }
     
 
     }
@@ -128,14 +121,12 @@ data.push({name: "LUNCH", header: true})
     
       for(i = 0; i < $("#"+ tdate +"-" + mealKey[x]).children().length; i++){
    
-        var breakNames = [];
+
    
         var mealName =$("#"+ tdate +"-" + mealKey[x]).children().eq(i).text();
 
-        var breakNames = mealName.split();
 
-
-         var foodItem = foodWeb.search('beef')[0];
+         var foodItem = foodWeb.search(mealName)[0];
 
          var calories = foodItem.data.kcal;
 
@@ -210,6 +201,13 @@ data.push({name: "DINNER", header: true})
         }
     
 
+    }else{
+        data.push({
+            name: 'There is no food listed today!',
+            cal: 0,
+            tdate: tdate,
+            header: false
+        })
     }
 
 
@@ -218,7 +216,7 @@ data.push({name: "DINNER", header: true})
 
 
 
-	return data
+    return data
 
 }
 
@@ -226,11 +224,11 @@ data.push({name: "DINNER", header: true})
 
 
 app.listen(process.env.PORT || 3000, err =>{
-	if(err){
-		console.error(err);
-	}else{
-		console.log('Running on port 3000');
-	}
+    if(err){
+        console.error(err);
+    }else{
+        console.log('Running on port 3000');
+    }
 });
 
 
