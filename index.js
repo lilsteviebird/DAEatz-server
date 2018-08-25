@@ -101,13 +101,6 @@ async function parsedData(){
     }
 
 
-    }else{
-        data.push({
-            name: 'There is no food listed today!',
-            cal: 0,
-            tdate: tdate,
-            header: false
-        })
     }
 }
 
