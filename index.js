@@ -26,6 +26,11 @@ var foods = {
 
 
 
+
+
+
+
+
 const deerfieldURL = "https://deerfield.edu/bulletin";
 
 
@@ -39,6 +44,8 @@ parsedData().then((completedFetch)=>{
 
 
 });
+
+
 
 
 
@@ -92,17 +99,9 @@ async function parsedData(){
             tdate: tdate,
             header: false
           });  
-
            
 
 
-        }if(mealKey[x] == 'BREAKFAST' && $("#"+ tdate +"-" + mealKey[x]).children().length <= 0){
-            data.push({
-                name: 'There is no Breakfast today!',
-                cal: 0,
-                tdate: tdate,
-                header: false
-            })
         }
     
 
@@ -151,26 +150,12 @@ data.push({name: "LUNCH", header: true})
            
 
 
-         }if(mealKey[x] == 'LUNCH' && $("#"+ tdate +"-" + mealKey[x]).children().length <= 0){
-            data.push({
-                name: 'There is no Breakfast today!',
-                cal: 0,
-                tdate: tdate,
-                header: false
-            })
-        }
+         }
 
 
         }
     
 
-    }else{
-        data.push({
-            name: 'There is no food listed today!',
-            cal: 0,
-            tdate: tdate,
-            header: false
-        })
     }
 
 
@@ -223,13 +208,6 @@ data.push({name: "DINNER", header: true})
         }
     
 
-    }else{
-        data.push({
-            name: 'There is no food listed today!',
-            cal: 0,
-            tdate: tdate,
-            header: false
-        })
     }
 
 
