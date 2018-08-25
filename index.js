@@ -76,37 +76,52 @@ async function parsedData(){
     for(x = 0; x < 3; x++){
  
 
-
-    if($("#"+ tdate +"-" + mealKey[x]).children().length>0){
+if($("#"+ tdate +"-" + mealKey[x]).children().length>0){
     
       for(i = 0; i < $("#"+ tdate +"-" + mealKey[x]).children().length; i++){
-   
 
+        var breakMealNames = [];
+        var breakTolCal = 0;
+   
    
         var mealName =$("#"+ tdate +"-" + mealKey[x]).children().eq(i).text();
 
+        console.log(mealName);
 
-         var foodItem = foodWeb.search(mealName)[0];
+        breakMealNames = mealName.split(" and ");
 
-         var calories = foodItem.data.kcal;
+        console.log(breakMealNames);
 
-         var serving = Math.round((foodItem.data.primaryWeight / 100) * calories);
-         if(mealKey[x] == 'BREAKFAST'){
+        for(p=0; p < breakMealNames.length; p++){
+
+            var foodItem = foodWeb.search(breakMealNames[p])[0];
+            console.log('for looped', foodItem)
+            var calories = foodItem.data.kcal;
+            var serving = Math.round((foodItem.data.primaryWeight / 100) * calories);
+
+            breakTolCal = breakTolCal + calories;
+
+        }
+
+        if(mealKey[x] == 'BREAKFAST'){
+
 
             data.push({
             name: mealName,
-            cal: calories,
+            cal: breakTolCal,
             tdate: tdate,
             header: false
-          });  
+         }); 
            
 
 
+         }
+
+
         }
+
+
     
-
-    }
-
 
     }
 }
@@ -153,12 +168,6 @@ data.push({name: "LUNCH", header: true})
 
         }
 
-
-         // var foodItem = foodWeb.search(mealName)[0];
-
-         // var calories = foodItem.data.kcal;
-
-         // var serving = Math.round((foodItem.data.primaryWeight / 100) * calories);
         if(mealKey[x] == 'LUNCH'){
 
 
@@ -198,37 +207,51 @@ data.push({name: "DINNER", header: true})
  
 
 
-    if($("#"+ tdate +"-" + mealKey[x]).children().length>0){
+   if($("#"+ tdate +"-" + mealKey[x]).children().length>0){
     
       for(i = 0; i < $("#"+ tdate +"-" + mealKey[x]).children().length; i++){
-   
 
+        var breakMealNames = [];
+        var breakTolCal = 0;
+   
    
         var mealName =$("#"+ tdate +"-" + mealKey[x]).children().eq(i).text();
 
+        console.log(mealName);
 
-         var foodItem = foodWeb.search(mealName)[0];
+        breakMealNames = mealName.split(" and ");
 
-         var calories = foodItem.data.kcal;
+        console.log(breakMealNames);
 
-         var serving = Math.round((foodItem.data.primaryWeight / 100) * calories);
+        for(p=0; p < breakMealNames.length; p++){
+
+            var foodItem = foodWeb.search(breakMealNames[p])[0];
+            console.log('for looped', foodItem)
+            var calories = foodItem.data.kcal;
+            var serving = Math.round((foodItem.data.primaryWeight / 100) * calories);
+
+            breakTolCal = breakTolCal + calories;
+
+        }
+
         if(mealKey[x] == 'DINNER'){
 
 
             data.push({
             name: mealName,
-            cal: calories,
+            cal: breakTolCal,
             tdate: tdate,
             header: false
          }); 
+           
 
 
          }
 
-    
-
 
         }
+
+
     
 
     }
