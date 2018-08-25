@@ -64,12 +64,12 @@ async function parsedData(){
 
     var mealKey = ['BREAKFAST', 'LUNCH', 'DINNER']
     data.push({name: 'BREAKFAST', header: true})
-     data.push({
-            name: 'hello',
-            cal: 100,
-            tdate: tdate,
-            header: false
-          })
+     // data.push({
+     //        name: 'hello',
+     //        cal: 100,
+     //        tdate: tdate,
+     //        header: false
+     //      })
     var LUNCH = [];
     var DINNER = [];
 
@@ -113,12 +113,12 @@ async function parsedData(){
 
 data.push({name: "LUNCH", header: true})
 
- data.push({
-            name: 'hello',
-            cal: 200,
-            tdate: tdate,
-            header: false
-          })
+ // data.push({
+ //            name: 'hello',
+ //            cal: 200,
+ //            tdate: tdate,
+ //            header: false
+ //          })
 
  for(x = 1; x < 3; x++){
  
@@ -163,12 +163,12 @@ data.push({name: "LUNCH", header: true})
 }
 
 data.push({name: "DINNER", header: true})
-data.push({
-            name: 'asdf',
-            cal: 300,
-            tdate: tdate,
-            header: false
-          }); 
+// data.push({
+//             name: 'asdf',
+//             cal: 300,
+//             tdate: tdate,
+//             header: false
+//           }); 
 
 
  for(x = 1; x < 3; x++){
