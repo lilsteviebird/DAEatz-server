@@ -86,7 +86,7 @@ async function parsedData(){
       	var mealName =$("#"+ tdate +"-" + mealKey[x]).children().eq(i).text();
 
 
-         var foodItem = foodWeb.search(mealName)[0];
+         var foodItem = foodWeb.search(mealName)[5];
 
          var calories = foodItem.data.kcal;
 
