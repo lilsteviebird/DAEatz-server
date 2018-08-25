@@ -86,7 +86,7 @@ async function parsedData(){
       	var mealName =$("#"+ tdate +"-" + mealKey[x]).children().eq(i).text();
 
 
-         var foodItem = foodWeb.search(mealName)[5];
+         var foodItem = foodWeb.search(mealName)[0];
 
          var calories = foodItem.data.kcal;
 
@@ -128,22 +128,23 @@ data.push({name: "LUNCH", header: true})
     
       for(i = 0; i < $("#"+ tdate +"-" + mealKey[x]).children().length; i++){
    
-
+        var breakNames = [];
+        var breakNamesTolCal = 0;
    
         var mealName =$("#"+ tdate +"-" + mealKey[x]).children().eq(i).text();
 
+        var breakNames = mealName.split();
 
-         var foodItem = foodWeb.search(mealName)[0];
-
-         var calories = foodItem.data.kcal;
-
-         var serving = Math.round((foodItem.data.primaryWeight / 100) * calories);
-        if(mealKey[x] == 'LUNCH'){
+        for(p = 0; p < breakNames.length; p++){
+            var foodItem = foodWeb.search(breakNames[p])[0];
+            var calories = foodItem.data.kcal;
+            breakNamesTolCal = breakNamesTolCal + calories;
+               if(mealKey[x] == 'LUNCH'){
 
 
             data.push({
             name: mealName,
-            cal: calories,
+            cal: breakNamesTolCal,
             tdate: tdate,
             header: false
          }); 
@@ -151,6 +152,16 @@ data.push({name: "LUNCH", header: true})
 
 
          }
+
+
+
+        }
+
+
+         
+
+         // var serving = Math.round((foodItem.data.primaryWeight / 100) * calories);
+        
 
 
         }
