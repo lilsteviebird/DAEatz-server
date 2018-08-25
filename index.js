@@ -101,6 +101,13 @@ async function parsedData(){
     }
 
 
+    }else{
+        data.push({
+            name: 'There is no food listed today!',
+            cal: 0,
+            tdate: tdate,
+            header: false
+        })
     }
 }
 
@@ -149,6 +156,13 @@ data.push({name: "LUNCH", header: true})
         }
     
 
+    }else{
+        data.push({
+            name: 'There is no food listed today!',
+            cal: 0,
+            tdate: tdate,
+            header: false
+        })
     }
 
 
