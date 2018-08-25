@@ -136,10 +136,16 @@ data.push({name: "LUNCH", header: true})
    
         var mealName =$("#"+ tdate +"-" + mealKey[x]).children().eq(i).text();
 
-        breakMealNames = mealName.split(" ");
+        console.log(mealName);
+
+        breakMealNames = mealName.split(" and ");
+
+        console.log(breakMealNames);
 
         for(p=0; p < breakMealNames.length; p++){
+
             var foodItem = foodWeb.search(breakMealNames[p])[0];
+            console.log('for looped', foodItem)
             var calories = foodItem.data.kcal;
             var serving = Math.round((foodItem.data.primaryWeight / 100) * calories);
 
@@ -236,6 +242,8 @@ data.push({name: "DINNER", header: true})
     return data
 
 }
+
+parsedData();
 
 
 
