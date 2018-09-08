@@ -296,11 +296,11 @@ data.push({name: "LUNCH", header: true})
 
 console.log(data)
 
-for(r = 0; r < data.length - 1; r ++){
-	if(data[r].name == data[r+1].name){
-		data.splice(r+1, 1)
-	}
-}
+// for(r = 0; r < data.length - 1; r ++){
+// 	if(data[r].name == data[r+1].name){
+// 		data.splice(r+1, 1)
+// 	}
+// }
 
 console.log("new data", data)
 
