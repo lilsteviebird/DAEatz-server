@@ -12,8 +12,8 @@ app.use(bodyParser.json());
 
 let now = new Date();
 
-var tdate = date.format(now, 'YYYY-MM-DD');
-//var tdate = date.format(now, '2018-08-28');
+//var tdate = date.format(now, 'YYYY-MM-DD');
+var tdate = date.format(now, '2018-09-08');
 
 
 
@@ -73,12 +73,13 @@ async function parsedData(){
     var LUNCH = [];
     var DINNER = [];
 
-    for(x = 0; x < 3; x++){
+    for(x = 0; x < 1; x++){
  
 
 if($("#"+ tdate +"-" + mealKey[x]).children().length>0){
     
       for(i = 0; i < $("#"+ tdate +"-" + mealKey[x]).children().length; i++){
+      	var def = true;
 
         var breakMealNames = [];
         var breakTolCal = 0;
@@ -128,6 +129,8 @@ if($("#"+ tdate +"-" + mealKey[x]).children().length>0){
 
 
 
+
+
 data.push({name: "LUNCH", header: true})
 
  // data.push({
@@ -136,8 +139,9 @@ data.push({name: "LUNCH", header: true})
  //            tdate: tdate,
  //            header: false
  //          })
+ console.log('into lnch')
 
- for(x = 1; x < 3; x++){
+ for(x = 1; x < 2; x++){
  
 
 
@@ -157,14 +161,27 @@ data.push({name: "LUNCH", header: true})
 
         console.log(breakMealNames);
 
-        for(p=0; p < breakMealNames.length; p++){
+       for(p=0; p < breakMealNames.length; p++){
+
+       	var def = true
 
             var foodItem = foodWeb.search(breakMealNames[p])[0];
             console.log('for looped', foodItem)
-            var calories = foodItem.data.kcal;
-            var serving = Math.round((foodItem.data.primaryWeight / 100) * calories);
+            if(foodItem == undefined){
+            	data.push({
+            		name: mealName,
+            		cal: 220,
+            		tdate: tdate,
+            		header: false
+            	})
+            }else{
+            	 var calories = foodItem.data.kcal;
+            	 var serving = Math.round((foodItem.data.primaryWeight / 100) * calories);
 
-            breakTolCal = breakTolCal + calories;
+           		 breakTolCal = breakTolCal + calories;
+
+            }
+          
 
         }
 
@@ -203,7 +220,7 @@ data.push({name: "DINNER", header: true})
 //           }); 
 
 
- for(x = 1; x < 3; x++){
+ for(x = 2; x < 3; x++){
  
 
 
@@ -225,12 +242,26 @@ data.push({name: "DINNER", header: true})
 
         for(p=0; p < breakMealNames.length; p++){
 
+       	var def = true
+
             var foodItem = foodWeb.search(breakMealNames[p])[0];
             console.log('for looped', foodItem)
-            var calories = foodItem.data.kcal;
-            var serving = Math.round((foodItem.data.primaryWeight / 100) * calories);
+            if(foodItem == undefined){
+            	def = false;
+            	data.push({
+            		name: mealName,
+            		cal: 220,
+            		tdate: tdate,
+            		header: false
+            	})
+            }if(foodItem != undefined){
+            	 var calories = foodItem.data.kcal;
+            	 var serving = Math.round((foodItem.data.primaryWeight / 100) * calories);
 
-            breakTolCal = breakTolCal + calories;
+           		 breakTolCal = breakTolCal + calories;
+
+            }
+          
 
         }
 
@@ -260,6 +291,7 @@ data.push({name: "DINNER", header: true})
     
 }
 
+console.log(data)
 
 
     return data
