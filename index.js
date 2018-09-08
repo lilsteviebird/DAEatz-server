@@ -13,8 +13,8 @@ app.use(bodyParser.json());
 
 let now = new Date();
 
-//var tdate = date.format(now, 'YYYY-MM-DD');
-var tdate = date.format(now, '2018-09-08');
+var tdate = date.format(now, 'YYYY-MM-DD');
+//var tdate = date.format(now, '2018-09-08');
 
 
 
@@ -64,7 +64,7 @@ async function parsedData(){
     const $ = cheerio.load(html);
 
     var mealKey = ['BREAKFAST', 'LUNCH', 'DINNER']
-    data.push({name: 'BREAKFAST', header: true})
+    data.push({name: 'BREAKFAST/BRUNCH', header: true})
      // data.push({
      //        name: 'hello',
      //        cal: 100,
@@ -74,59 +74,74 @@ async function parsedData(){
     var LUNCH = [];
     var DINNER = [];
 
-//     for(x = 0; x < 1; x++){
+    for(x = 0; x < 1; x++){
  
 
-// if($("#"+ tdate +"-" + mealKey[x]).children().length>0){
+if($("#"+ tdate +"-" + mealKey[x]).children().length>0){
     
-//       for(i = 0; i < $("#"+ tdate +"-" + mealKey[x]).children().length; i++){
-//       	var def = true;
+      for(i = 0; i < $("#"+ tdate +"-" + mealKey[x]).children().length; i++){
+      	var def = true;
 
-//         var breakMealNames = [];
-//         var breakTolCal = 0;
+        var breakMealNames = [];
+        var breakTolCal = 0;
    
    
-//         var mealName =$("#"+ tdate +"-" + mealKey[x]).children().eq(i).text();
+        var mealName =$("#"+ tdate +"-" + mealKey[x]).children().eq(i).text();
 
-//         console.log(mealName);
+        console.log(mealName);
 
-//         breakMealNames = mealName.split(" and ");
+        breakMealNames = mealName.split(" and ");
 
-//         console.log(breakMealNames);
+        console.log(breakMealNames);
 
-//         for(p=0; p < breakMealNames.length; p++){
+       for(p=0; p < breakMealNames.length; p++){
 
-//             var foodItem = foodWeb.search(breakMealNames[p])[0];
-//             console.log('for looped', foodItem)
-//             var calories = foodItem.data.kcal;
-//             var serving = Math.round((foodItem.data.primaryWeight / 100) * calories);
+       	var def = true
 
-//             breakTolCal = breakTolCal + calories;
+            var foodItem = foodWeb.search(breakMealNames[p])[0];
+            console.log('for looped', foodItem)
+            if(foodItem == undefined){
+            	console.log("hit here now for panini")
+            	data.push({
+            		name: mealName,
+            		cal: 220,
+            		tdate: tdate,
+            		header: false
+            	})
+            }if(foodItem != undefined){
 
-//         }
+            	 var calories = foodItem.data.kcal;
+            	 var serving = Math.round((foodItem.data.primaryWeight / 100) * calories);
 
-//         if(mealKey[x] == 'BREAKFAST'){
+           		 breakTolCal = breakTolCal + calories;
+
+            }
+          
+
+        }
+
+        if(mealKey[x] == 'BREAKFAST' || mealKey[x] == "BRUNCH"){
 
 
-//             data.push({
-//             name: mealName,
-//             cal: breakTolCal,
-//             tdate: tdate,
-//             header: false
-//          }); 
+            data.push({
+            name: mealName,
+            cal: breakTolCal,
+            tdate: tdate,
+            header: false
+         }); 
            
 
 
-//          }
+         }
 
 
-//         }
+        }
 
 
     
 
-//     }
-// }
+    }
+}
 
 
 
@@ -214,85 +229,85 @@ data.push({name: "LUNCH", header: true})
     
 }
 
-// data.push({name: "DINNER", header: true})
-// // data.push({
-// //             name: 'asdf',
-// //             cal: 300,
-// //             tdate: tdate,
-// //             header: false
-// //           }); 
+data.push({name: "DINNER", header: true})
+// data.push({
+//             name: 'asdf',
+//             cal: 300,
+//             tdate: tdate,
+//             header: false
+//           }); 
 
 
-//  for(x = 2; x < 3; x++){
+ for(x = 2; x < 3; x++){
  
 
 
-//    if($("#"+ tdate +"-" + mealKey[x]).children().length>0){
+   if($("#"+ tdate +"-" + mealKey[x]).children().length>0){
     
-//       for(i = 0; i < $("#"+ tdate +"-" + mealKey[x]).children().length; i++){
+      for(i = 0; i < $("#"+ tdate +"-" + mealKey[x]).children().length; i++){
 
-//         var breakMealNames = [];
-//         var breakTolCal = 0;
+        var breakMealNames = [];
+        var breakTolCal = 0;
    
    
-//         var mealName =$("#"+ tdate +"-" + mealKey[x]).children().eq(i).text();
+        var mealName =$("#"+ tdate +"-" + mealKey[x]).children().eq(i).text();
 
-//         console.log(mealName);
+        console.log(mealName);
 
-//         breakMealNames = mealName.split(" and ");
+        breakMealNames = mealName.split(" and ");
 
-//         console.log(breakMealNames);
+        console.log(breakMealNames);
 
-//         for(p=0; p < breakMealNames.length; p++){
+        for(p=0; p < breakMealNames.length; p++){
 
-//        	var def = true
+       	var def = true
 
-//             var foodItem = foodWeb.search(breakMealNames[p])[0];
-//             console.log('for looped', foodItem)
-//             if(foodItem == undefined){
-//             	def = false;
-//             	data.push({
-//             		name: mealName,
-//             		cal: 220,
-//             		tdate: tdate,
-//             		header: false
-//             	})
-//             }if(foodItem != undefined){
-//             	 var calories = foodItem.data.kcal;
-//             	 var serving = Math.round((foodItem.data.primaryWeight / 100) * calories);
+            var foodItem = foodWeb.search(breakMealNames[p])[0];
+            console.log('for looped', foodItem)
+            if(foodItem == undefined){
+            	def = false;
+            	data.push({
+            		name: mealName,
+            		cal: 220,
+            		tdate: tdate,
+            		header: false
+            	})
+            }if(foodItem != undefined){
+            	 var calories = foodItem.data.kcal;
+            	 var serving = Math.round((foodItem.data.primaryWeight / 100) * calories);
 
-//            		 breakTolCal = breakTolCal + calories;
+           		 breakTolCal = breakTolCal + calories;
 
-//             }
+            }
           
 
-//         }
+        }
 
-//         if(mealKey[x] == 'DINNER'){
+        if(mealKey[x] == 'DINNER'){
 
 
-//             data.push({
-//             name: mealName,
-//             cal: breakTolCal,
-//             tdate: tdate,
-//             header: false
-//          }); 
+            data.push({
+            name: mealName,
+            cal: breakTolCal,
+            tdate: tdate,
+            header: false
+         }); 
            
 
 
-//          }
+         }
 
 
-//         }
-
-
-    
-
-//     }
+        }
 
 
     
-// }
+
+    }
+
+
+    
+}
 
 console.log(data)
 
