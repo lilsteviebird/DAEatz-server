@@ -119,6 +119,11 @@ if($("#"+ tdate +"-" + mealKey[x]).children().length>0 ){
           
 
         }
+          if(breakTolCal > 500){
+        	breakTolCal = breakTolCal - 420;
+        }if(breakTolCal < 60){
+        	breakTolCal = breakTolCal + 100;
+        }
 
         if(mealKey[x] == 'BREAKFAST' || mealKey[x] == "BRUNCH"){
 
@@ -204,6 +209,8 @@ data.push({name: "LUNCH", header: true})
         }
         if(breakTolCal > 500){
         	breakTolCal = breakTolCal - 420;
+        }if(breakTolCal < 60){
+        	breakTolCal = breakTolCal + 100;
         }
 
         if(mealKey[x] == 'LUNCH'){
@@ -284,6 +291,11 @@ data.push({name: "DINNER", header: true})
             }
           
 
+        }
+          if(breakTolCal > 500){
+        	breakTolCal = breakTolCal - 420;
+        }if(breakTolCal < 60){
+        	breakTolCal = breakTolCal + 100;
         }
 
         if(mealKey[x] == 'DINNER'){
