@@ -202,8 +202,8 @@ data.push({name: "LUNCH", header: true})
           
 
         }
-        if(breakTolCal > 900){
-        	breakTolCal = breakTolCal - 450;
+        if(breakTolCal > 500){
+        	breakTolCal = breakTolCal - 420;
         }
 
         if(mealKey[x] == 'LUNCH'){
