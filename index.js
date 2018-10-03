@@ -77,7 +77,7 @@ async function parsedData(){
     for(x = 0; x < 1; x++){
  
 
-if($("#"+ tdate +"-" + mealKey[x]).children().length>0){
+if($("#"+ tdate +"-" + mealKey[x]).children().length>0 ){
     
       for(i = 0; i < $("#"+ tdate +"-" + mealKey[x]).children().length; i++){
       	var def = true;
@@ -201,6 +201,9 @@ data.push({name: "LUNCH", header: true})
             }
           
 
+        }
+        if(breakTolCal > 900){
+        	breakTolCal = breakTolCal - 450;
         }
 
         if(mealKey[x] == 'LUNCH'){
